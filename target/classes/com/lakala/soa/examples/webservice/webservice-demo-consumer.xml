@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:soa="http://www.lakala.com/schema/soa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.lakala.com/schema/soa http://www.lakala.com/schema/soa/soa.xsd">
+
+    <import resource="classpath:soa-base.xml"/>
+
+	<!-- here is the consumer client configuration -->
+
+<!-- 																									           http://10.7.38.140:8080/soa-test/services/com.lakala.soa.examples.webservice.api.WebService -->
+<!-- 	<soa:reference id="serviceTest" interface="com.lakala.soa.examples.webservice.api.WebService" url="webservice://172.24.200.4:8080/soa-test/services/com.lakala.soa.examples.webservice.api.WebService"/> -->
+<soa:reference id="serviceTest" interface="com.lakala.soa.examples.webservice.api.WebService" url="webservice://localhost:8080/dssp/services/com.lakala.soa.examples.webservice.api.WebService"/>
+<!-- 	<soa:reference id="serviceTest" interface="com.lakala.soa.examples.webservice.api.WebService" /> -->
+	
+	<bean id="consumerBean" class="com.lakala.soa.examples.webservice.ConsumerBean">
+        <property name="webService" ref="serviceTest"/>
+    </bean>
+</beans>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:soa="http://www.lakala.com/schema/soa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.lakala.com/schema/soa http://www.lakala.com/schema/soa/soa.xsd">
+
+	<import resource="classpath:soa-base.xml"/>
+	
+	<bean id="asyncService" class="com.lakala.soa.examples.async.impl.AsyncServiceImpl" />
+	
+	<soa:service interface="com.lakala.soa.examples.async.api.AsyncService" ref="asyncService" />
+	
+</beans>

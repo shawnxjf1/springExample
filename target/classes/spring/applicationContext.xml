@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:soa="http://www.lakala.com/schema/soa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.lakala.com/schema/soa http://www.lakala.com/schema/soa/soa.xsd">
+
+	<bean id="testWs" class="com.lakala.soa.examples.webservice.impl.WebServiceImpl" />
+
+    <bean id="userService" class="com.lakala.soa.examples.rest.impl.UserServiceImpl" />
+
+    <bean id="userRestService" class="com.lakala.soa.examples.rest.impl.UserRestServiceImpl">
+        <property name="userService" ref="userService"/>
+    </bean>
+
+	<bean id="anotherUserRestService" class="com.lakala.soa.examples.rest.impl.AnotherUserRestServiceImpl">
+        <property name="userService" ref="userService"/>
+    </bean>
+    
+
+    <!-- service test  -->
+    <import resource="classpath:soa-base.xml"/>
+    <soa:service interface="com.lakala.soa.examples.webservice.api.WebService" ref="testWs" delay="10"/> 
+    
+    <soa:service interface="com.lakala.soa.examples.webservice.api.WebService" ref="testWs"  protocol="webservice" delay="10"/> 
+    
+    <soa:service interface="com.lakala.soa.examples.rest.api.UserRestService" ref="userRestService"  protocol="rest"  delay="10"/>
+	<soa:service interface="com.lakala.soa.examples.rest.api.AnotherUserRestService" ref="anotherUserRestService"  protocol="rest"  delay="10"/>
+	
+</beans>

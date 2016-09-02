@@ -1,0 +1,25 @@
+##该工程目的
+积累代码小片段
+工程积累的范畴为企业级以spring mybatis 为核心的代码积累
+
+##怎么记录
+通过package 分隔每个小功能模块
+
+
+##需要注意的点
+1.对于有problem的需要在代码中表明
+2.对于attention特点要加上注释和遇到的场景
+
+该工程目的是通过实时运行代码来了解技术，所以这里有几点主要保证：
+a.保证项目jar包都存在（可以在百度云盘或同步盘同步一份）。
+b.怎么运行需要描述其步骤。
+
+##github部署步骤
+```java
+echo "# J2seCodeExample" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/shawnxjf1/J2seCodeExample.git
+git push -u origin master
+```
