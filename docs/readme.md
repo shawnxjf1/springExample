@@ -14,12 +14,3 @@
 a.保证项目jar包都存在（可以在百度云盘或同步盘同步一份）。
 b.怎么运行需要描述其步骤。
 
-##github部署步骤
-```java
-echo "# J2seCodeExample" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/shawnxjf1/J2seCodeExample.git
-git push -u origin master
-```
