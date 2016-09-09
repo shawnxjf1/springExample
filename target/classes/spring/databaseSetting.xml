@@ -48,7 +48,10 @@
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"><!-- sqlSessionFactory bean -->
 		<property name="dataSource" ref="dataSource" /><!-- 数据源 -->
-		<property name="configLocation" value="classpath:sqlmap/configuration.xml" /><!-- 配置文件 -->
+		<!-- 
+		<property name="configLocation" value="classpath:sqlmap/configuration.xml" />
+		 -->
+		<!-- 配置文件 -->
 		<property name="mapperLocations" value="classpath:sqlmap/mysql/*_mapping.xml"/>
 	</bean>
 	<bean id="sqlMap" class="org.mybatis.spring.SqlSessionTemplate">

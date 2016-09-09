@@ -1,4 +1,4 @@
-package com.person.util;
+package com.person.io;
 
 import java.io.FileInputStream;
 import java.util.Properties;

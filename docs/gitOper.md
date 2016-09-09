@@ -9,4 +9,4 @@ git push -u origin master
 ```
 
 ##github 提交记录
-2016-09-02：Branch master set up to track remote branch master from origin.
+2016-09-02：Branch master set up to track remote branch master from origin. from  lakala -window10

@@ -5,7 +5,7 @@
 	<artifactId>j2seCodeExample</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>DSSP Maven Webapp</name>
+	<name>j2seCodeExample Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -65,6 +65,12 @@
         <artifactId>spring-jdbc</artifactId>  
         <version>${spring.version}</version>  
     </dependency>  
+    
+       <dependency>
+    <groupId>commons-beanutils</groupId>
+    <artifactId>commons-beanutils</artifactId>
+    <version>1.9.1</version>
+      </dependency>
 		
 <!-- add by xujianfeng end -->
 
