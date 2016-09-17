@@ -3,7 +3,8 @@ package com.person.log;
 import org.apache.log4j.Logger;
 
 /**
- * 每次写代码都需要 岔开思路去考虑怎么打印日志， 所以这里写下来（形成template）。
+ * 每次写代码都需要 岔开思路去考虑怎么打印日志， 所以这里写下来（形成template）。 1.所有的日志都应该符合信息流逻辑，即error日志打印的是
+ * 信息流链上出了问题，如果执行结果有问题首先可以去看有没有error日志(信息流有没有偏差)。
  * 
  * @author lakala-shawn
  *
