@@ -4,6 +4,9 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="spring-data-elasticsearch-2.0.2.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/spring-data-elasticsearch-2.0.2.RELEASE/spring-data-elasticsearch-2.0.2.RELEASE">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="dssp"/>
         <property name="java-output-path" value="/dssp/target/classes"/>
     </wb-module>

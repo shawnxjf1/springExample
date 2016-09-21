@@ -2,7 +2,8 @@ package com.data;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.List;
+
+import com.lakala.soa.examples.mybatis.model.IndexMeta;
 
 public class SearchRule implements Serializable {
 
@@ -13,28 +14,20 @@ public class SearchRule implements Serializable {
 	private String ruleName;
 
 	/**
-	 * 该字段必须是索引创建的基准字段
+	 * 存储信息 : [f1]|[f2]|f3
 	 */
-	private String searchField;
+	private String searchKey;
 
 	/**
-	 * 查询字段解析类型
+	 * 查询字段解析类型 f1:date,f2:number,f3:collection
 	 */
-	private String parseType;
+	private String parseTypes;
 
-	private String matchBegin;
+	private String beginRanges;
 
-	private String matchEnd;
+	private String endRanges;
 
-	private String matchCollection;
-
-	private List<String> matchCollectionList;
-
-	private int indexId;
-
-	private String bizType;
-
-	private String sysName;
+	private String matchCollections;
 
 	private Timestamp createTime;
 
@@ -44,6 +37,16 @@ public class SearchRule implements Serializable {
 	private int status;
 
 	private String description;
+
+	/**
+	 * 
+	 */
+	private IndexMeta indexMeta = null;
+
+	public SearchRule() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getRuleId() {
 		return ruleId;
@@ -61,68 +64,70 @@ public class SearchRule implements Serializable {
 		this.ruleName = ruleName;
 	}
 
-	public String getSearchField() {
-		return searchField;
+	public String getSearchKey() {
+		return searchKey;
 	}
 
-	public void setSearchField(String searchField) {
-		this.searchField = searchField;
+	public void setSearchKey(String searchKey) {
+		this.searchKey = searchKey;
 	}
 
-	public String getParseType() {
-		return parseType;
+	public String getParseTypes() {
+		return parseTypes;
 	}
 
-	public void setParseType(String parseType) {
-		this.parseType = parseType;
+	public void setParseTypes(String parseTypes) {
+		this.parseTypes = parseTypes;
 	}
 
-	public String getMatchBegin() {
-		return matchBegin;
+	public String getBeginRanges() {
+		return beginRanges;
 	}
 
-	public void setMatchBegin(String matchBegin) {
-		this.matchBegin = matchBegin;
+	public void setBeginRanges(String beginRanges) {
+		this.beginRanges = beginRanges;
 	}
 
-	public String getMatchEnd() {
-		return matchEnd;
+	public String getEndRanges() {
+		return endRanges;
 	}
 
-	public void setMatchEnd(String matchEnd) {
-		this.matchEnd = matchEnd;
+	public void setEndRanges(String endRanges) {
+		this.endRanges = endRanges;
 	}
 
-	public String getMatchCollection() {
-		return matchCollection;
+	public String getMatchCollections() {
+		return matchCollections;
 	}
 
-	public void setMatchCollection(String matchCollection) {
-		this.matchCollection = matchCollection;
+	public void setMatchCollections(String matchCollections) {
+		this.matchCollections = matchCollections;
 	}
 
-	public int getIndexId() {
-		return indexId;
+	/**
+	 * 
+	 * @return
+	 */
+	public IndexMeta getIndexMeta() {
+		return indexMeta;
 	}
 
-	public void setIndexId(int indexId) {
-		this.indexId = indexId;
+	public void setIndexMeta(IndexMeta indexMeta) {
+		this.indexMeta = indexMeta;
 	}
 
-	public String getBizType() {
-		return bizType;
+	public String getIndexName() {
+		if (this.indexMeta != null) {
+			return this.indexMeta.getIndexName();
+		}
+		return null;
 	}
 
-	public void setBizType(String bizType) {
-		this.bizType = bizType;
-	}
-
-	public String getSysName() {
-		return sysName;
-	}
-
-	public void setSysName(String sysName) {
-		this.sysName = sysName;
+	public String getTypeName() {
+		if (this.indexMeta != null) {
+			return this.indexMeta.getTypeName();
+		}
+		return null;
 	}
 
 	public Timestamp getCreateTime() {
@@ -157,21 +162,11 @@ public class SearchRule implements Serializable {
 		this.description = description;
 	}
 
-	public List<String> getMatchCollectionList() {
-		return matchCollectionList;
-	}
-
-	public void setMatchCollectionList(List<String> matchCollectionList) {
-		this.matchCollectionList = matchCollectionList;
-	}
-
 	@Override
 	public String toString() {
-		return "SearchRule [ruleId=" + ruleId + ", ruleName=" + ruleName + ", searchField=" + searchField
-				+ ", parseType=" + parseType + ", matchBegin=" + matchBegin + ", matchEnd=" + matchEnd
-				+ ", matchCollection=" + matchCollection + ", matchCollectionList=" + matchCollectionList + ", indexId="
-				+ indexId + ", bizType=" + bizType + ", sysName=" + sysName + ", createTime=" + createTime
-				+ ", updateTime=" + updateTime + ", status=" + status + ", description=" + description + "]";
+		return "SearchRule [ruleId=" + ruleId + ", ruleName=" + ruleName + ", searchKey=" + searchKey + ", parseTypes="
+				+ parseTypes + ", beginRanges=" + beginRanges + ", endRanges=" + endRanges + ", matchCollections="
+				+ matchCollections + ", indexMeta=" + indexMeta + "]";
 	}
 
 }

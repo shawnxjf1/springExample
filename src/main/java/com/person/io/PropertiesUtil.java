@@ -55,6 +55,8 @@ public class PropertiesUtil {
 		if (fileName == null || fileName.isEmpty()) {
 			fileName = CONFIG_FILE;
 		}
+
+		// ReadSourceCode 这个是获取系统路径不是classPath()下的，当你打成jar包就执行不了了
 		String localPath = ClassLoader.getSystemResource(CONFIG_FILE).toString();
 		int fileKeyWordIndex = localPath.indexOf(":") + 1;
 		localPath = localPath.substring(fileKeyWordIndex);

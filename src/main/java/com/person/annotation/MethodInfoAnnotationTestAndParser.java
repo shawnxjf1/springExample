@@ -55,6 +55,10 @@ public class MethodInfoAnnotationTestAndParser {
 		printAnnotatin();
 	}
 
+	// 当我们想读取某个注释信息时，我们是在运行时通过反射来实现的，如果你对元注释还有点印象，那你应该记得我们需要将保持性策略设置为RUNTIME，也就是说只有注释标记了@Retention(RetentionPolicy.RUNTIME)的，我们才能通过反射来获得相关信息
+	/**
+	 * policy改成source 输出是 "",必须是runtime才能获取反射信息。
+	 */
 	@Test
 	public void testAnnotationParser() {
 		parseMethodInfoAnnotation();
