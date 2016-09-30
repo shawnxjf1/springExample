@@ -12,6 +12,9 @@ public class StringExample {
 		System.out.println(strArrays.toString());
 	}
 
+	/**
+	 * subString()中无需考虑正则
+	 */
 	@Test
 	public void testSubStr() {
 		String a = "[abc]"; // subString 这里[] 在正则中的特殊字符不考虑

@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.lakala.soa.examples.mybatis.model.IndexMeta;
-import com.lakala.soa.examples.mybatis.service.IndexMetaService;
+import com.packStructure.dao.IndexMetaDao;
 
 public class TestIndexMeta {
 	private static ApplicationContext ctx;
@@ -24,20 +24,20 @@ public class TestIndexMeta {
 		IndexMeta indexMeta = new IndexMeta();
 		indexMeta.setIndexName("solrToesIndex");
 		indexMeta.setTypeName("solrToesType");
-		IndexMetaService indexMetaService = (IndexMetaService) ctx.getBean("indexMetaService");
+		IndexMetaDao indexMetaService = (IndexMetaDao) ctx.getBean("indexMetaService");
 		indexMetaService.addIndexMeta(indexMeta);
 	}
 
 	@Test
 	public void testQueryByIndexName() {
-		IndexMetaService IndexMetaService = (IndexMetaService) ctx.getBean("indexMetaService");
+		IndexMetaDao IndexMetaService = (IndexMetaDao) ctx.getBean("indexMetaService");
 		IndexMeta IndexMeta = IndexMetaService.searchIndexMetaByIndexName("solrToesIndex_3");
 		Assert.assertEquals("solrToesIndex_3", IndexMeta.getIndexName());
 	}
 
 	@Test
 	public void deleteIndexMetaById() {
-		IndexMetaService IndexMetaService = (IndexMetaService) ctx.getBean("indexMetaService");
+		IndexMetaDao IndexMetaService = (IndexMetaDao) ctx.getBean("indexMetaService");
 		IndexMeta IndexMeta = new IndexMeta();
 		IndexMeta.setmId(1);
 		int delResult = IndexMetaService.deleteIndexMeta(IndexMeta);
@@ -53,7 +53,7 @@ public class TestIndexMeta {
 	 */
 	@Test
 	public void deleteIndexMetaByIndeName() {
-		IndexMetaService IndexMetaService = (IndexMetaService) ctx.getBean("indexMetaService");
+		IndexMetaDao IndexMetaService = (IndexMetaDao) ctx.getBean("indexMetaService");
 		IndexMeta IndexMeta = new IndexMeta();
 		IndexMeta.setIndexName("solrToesIndex_3");
 		int delResult = IndexMetaService.deleteIndexMeta(IndexMeta);
@@ -62,7 +62,7 @@ public class TestIndexMeta {
 
 	@Test
 	public void testUpdateIndexMeta() {
-		IndexMetaService IndexMetaService = (IndexMetaService) ctx.getBean("indexMetaService");
+		IndexMetaDao IndexMetaService = (IndexMetaDao) ctx.getBean("indexMetaService");
 
 		IndexMeta indexMeta = new IndexMeta();
 		indexMeta.setmId(1);

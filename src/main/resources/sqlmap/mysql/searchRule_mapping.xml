@@ -2,6 +2,9 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设计表的时候不管什么表  一定要设计createTime,updateTime -->	
+<!--  mybatis 使用参考：http://www.cnblogs.com/rollenholt/p/3365866.html -->
 <mapper namespace="SearchRule">
 
     <sql id="ruleFiledsWithIndexMeta">

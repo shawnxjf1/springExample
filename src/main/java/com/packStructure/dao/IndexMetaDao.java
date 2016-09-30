@@ -1,4 +1,4 @@
-package com.lakala.soa.examples.mybatis.service;
+package com.packStructure.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,8 +6,14 @@ import org.springframework.stereotype.Service;
 
 import com.lakala.soa.examples.mybatis.model.IndexMeta;
 
+/**
+ * 1.这里定义了dao层，以后再service层就不需再引用SqlSessionTemplate sqlMap,访问数据全都通过dao<br>
+ * 
+ * @author lakala-shawn
+ *
+ */
 @Service
-public class IndexMetaService {
+public class IndexMetaDao {
 
 	@Autowired
 	SqlSessionTemplate sqlMap;

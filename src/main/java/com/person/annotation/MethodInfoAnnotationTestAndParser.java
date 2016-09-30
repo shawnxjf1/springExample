@@ -50,6 +50,10 @@ public class MethodInfoAnnotationTestAndParser {
 		}
 	}
 
+	// FIXME 怎么获取类的注解
+	// TODO
+	// 静态导入类和动态导入类的区别，parseMethodInfoAnnotation()方法里-为什么要loadClass(),我直接getClass不行吗？
+
 	@Test
 	public void testPrintAnnotation() {
 		printAnnotatin();
