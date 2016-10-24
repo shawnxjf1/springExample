@@ -22,5 +22,8 @@
 	 -->
 	 <bean id="indexMeta" class="com.person.spring.IndexMetaService">
     </bean>
-	
+    
+    <!--  
+     <soa:service interface="com.lakala.soa.examples.webservice.api.WebService" ref="testWs"  protocol="webservice" delay="10"/>
+	-->
 </beans>
