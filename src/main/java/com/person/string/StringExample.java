@@ -63,7 +63,18 @@ public class StringExample {
 	public void testStr() {
 		String name = "a.b.c";
 		String path = name.replace('.', '/').concat("/");
-		System.out.println("path=" + path);
+		System.out.println("path=" + path); //path=a/b/c/
+	}
+	
+	/**
+	 * 注意占位符是 %s 不是{0}
+	 */
+	@Test
+	public void testFormat()
+	{
+		String url = "http:localhost:8080?fq=%s";
+		System.out.println("urlFormat=" + String.format(url, "TXNTIM:20160809"));
+		//urlFormat=http:localhost:8080?fq=TXNTIM:20160809
 	}
 
 }

@@ -6,6 +6,8 @@ import java.net.URLClassLoader;
 
 import org.junit.Test;
 
+import com.lakala.soa.reserve.rest.TestRPCDemoConsumer;
+
 /**
  * 背景： 学习ClassLoader.getResource()时候不知道classLoader的边界，所以有必要把java类加载机制弄清楚
  * 
@@ -30,10 +32,11 @@ public class ClassLoarderTest {
 	 * 二、类加载器各自搜索的目录 为了弄清楚这个问题，首先还要看看System类的API doc文档。
 	 * 
 	 * 1、Bootstrap
-	 * Loader（启动类加载器）：加载System.getProperty("sun.boot.class.path")所指定的路径或jar。
+	 * Loader（启动类加载器）：加载System.getProperty("sun.boot.class.path")所指定的路径或jar。<br>
 	 * 2、Extended
 	 * Loader（标准扩展类加载器ExtClassLoader）：加载System.getProperty("java.ext.dirs")所指定的路径或jar。在使用Java运行程序时，也可以指定其搜索路径，例如：java
-	 * -Djava.ext.dirs=d:/projects/testproj/classes HelloWorld 3、AppClass
+	 * -Djava.ext.dirs=d:/projects/testproj/classes HelloWorld <br> 
+	 * 3、AppClass
 	 * Loader（系统类加载器AppClassLoader）：加载System.getProperty("java.class.path")所指定的路径或jar。在使用Java运行程序时，也可以加上-cp来覆盖原有的Classpath设置，例如：
 	 * java -cp ./lavasoft/classes HelloWorld
 	 * ExtClassLoader和AppClassLoader在JVM启动后，会在JVM中保存一份，并且在程序运行中无法改变其搜索路径。如果想在运行时从其他搜索路径加载类，就要产生新的类加载器。
@@ -46,8 +49,8 @@ public class ClassLoarderTest {
 		Class c = hello.getClass();
 		ClassLoader loader = c.getClassLoader();
 		System.out.println("classLoader" + loader);
-		System.out.println("classLoader.getParent()=" + loader.getParent());
-		System.out.println("classLoader.getParent().getParent()=" + loader.getParent().getParent());
+		System.out.println(loader+ ".getParent()=" + loader.getParent());
+		System.out.println(loader.getParent()+".getParent()=" + loader.getParent().getParent());
 
 		// classLoadersun.misc.Launcher$AppClassLoader@73d16e93
 		// classLoader.getParent()=sun.misc.Launcher$ExtClassLoader@15db9742
@@ -61,8 +64,10 @@ public class ClassLoarderTest {
 
 	@Test
 	public void testLoaderStyle() {
-		-- 参考：http://blog.csdn.net/wan368500/article/details/8215668
-		---运行失败 --需要整理
+//		-- 参考：http://blog.csdn.net/wan368500/article/details/8215668
+////		---运行失败 --需要整理
+		String config = ClassLoarderTest.class.getPackage().getName().replace('.', '/') + "/rest-demo-consumer.xml";
+
 		try {
 			URL url;
 			url = new URL("./");
@@ -70,15 +75,11 @@ public class ClassLoarderTest {
 			Class c;
 			c = myloader.loadClass("test.Test3");
 			TestClassLoder t3 = (TestClassLoder) c.newInstance();
-
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (MalformedURLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 

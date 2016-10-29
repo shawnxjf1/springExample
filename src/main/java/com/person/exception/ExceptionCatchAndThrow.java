@@ -19,16 +19,14 @@ import org.junit.Test;
  * 6.如果异常需要返回到源端，比如返回到web 用户浏览器
  * 则需要把该异常一直往上抛然后根据特定的异常转化成特定的异常码（比如支付中银行卡不对等等），但是也必须打印日志。
  * 
- * 7.checked 异常特定的异常代表特定的含义。
+ * 7.总体来说exception是全局的而return只是解决了当前函数返回的问题是一个局部解决方法（只解决了信息的一段），有异常和错误这样的信息最终
  * 
  * 问题： 1.如何设计异常类
- * 
  * @author lakala-shawn
- *
  */
-public class ExceptionExample {
+public class ExceptionCatchAndThrow {
 
-	Logger log = Logger.getLogger(ExceptionExample.class);
+	Logger log = Logger.getLogger(ExceptionCatchAndThrow.class);
 
 	/**
 	 * 
@@ -96,58 +94,6 @@ public class ExceptionExample {
 	}
 
 	public static void main(String[] args) {
-		new ExceptionExample().mockExceptionThrow();
+		new ExceptionCatchAndThrow().mockExceptionThrow();
 	}
-
-	// ---带完善，没有声明异常不能重新抛出去
-	// private static Map<String, String>
-	// getSearchKeyValMapByColonAndVerticalLine(String parseTypes) {
-	//
-	// Map<String, String> parseTypeMap = new HashMap<String, String>();
-	// try {
-	// String[] parseTypeArray = parseTypes.split(SEARCH_KEY_SEPARATOR);
-	// if (null == parseTypeArray) {
-	// return null;
-	// }
-	// for (String parseType : parseTypeArray) {
-	// String[] typeKeyVal = parseType.split(KEY_VAL_SEPARATOR);
-	// if (null == typeKeyVal || typeKeyVal.length != 2) {
-	// // FIXME 这里是否需要 专门弄一个 DATA_PARSE_EXCEPTION 来提示 输入录入有误
-	// log.error("parseTypes format error break for() loop,parseTypes=" +
-	// parseTypes);
-	// break;
-	// }
-	// parseTypeMap.put(typeKeyVal[0], typeKeyVal[1]);
-	// }
-	// } catch (Exception e) {
-	// log.error("error occur when,parseTypes=" + parseTypes, e);
-	// // throws e; 没有
-	// }
-	// return parseTypeMap;
-	// }
-	//
-	// public static SearchRuleCache convertRuleToRuleCacheObj(SearchRule
-	// ruleTmp) {
-	// SearchRuleCache ruleCache = new SearchRuleCache();
-	//
-	// // 把SearchRule 基本属性(BaseSearchRule继承过来属性)复制到SearchRuleCache对象
-	// try {
-	// BeanUtils.copyProperties(ruleCache, ruleTmp);
-	// } catch (IllegalAccessException e) {
-	// e.printStackTrace();
-	// log.error("copyProperties error,ruleTmp=" + ruleTmp);
-	// } catch (InvocationTargetException e) {
-	// e.printStackTrace();
-	// log.error("copyProperties error,ruleTmp=" + ruleTmp);
-	// }
-	//
-	// // 解析SearchRule中的每一个searchKey的规则
-	// String keys = ruleTmp.getSearchKeys();
-	// if (null == keys || keys.isEmpty()) {
-	// // attention 直接让程序结束
-	// throw new RuntimeException("keysis null or empty,searchRule" + ruleTmp);
-	// }
-	//
-	// }
-
 }

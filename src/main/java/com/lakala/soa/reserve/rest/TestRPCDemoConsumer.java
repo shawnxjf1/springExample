@@ -1,4 +1,4 @@
-package com.lakala.soa.examples.rest;
+package com.lakala.soa.reserve.rest;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
@@ -11,16 +11,16 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @since    JDK 1.7
  * @see 	 
  */
-public class DemoConsumer {
+public class TestRPCDemoConsumer {
 	static ClassPathXmlApplicationContext context = null;
 	
 	public static void main(String[] args) {
 		
-		String config = DemoConsumer.class.getPackage().getName().replace('.', '/') + "/rest-demo-consumer.xml";
+		String config = TestRPCDemoConsumer.class.getPackage().getName().replace('.', '/') + "/rest-demo-consumer.xml";
 		context= new ClassPathXmlApplicationContext(config);
         context.start();
         
-        ConsumerBean consumerBean = (ConsumerBean) context.getBean("consumerBean");
+        RPCConsumerBean consumerBean = (RPCConsumerBean) context.getBean("consumerBean");
         consumerBean.start();
 	}
 

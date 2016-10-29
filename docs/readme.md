@@ -14,3 +14,9 @@
 a.保证项目jar包都存在（可以在百度云盘或同步盘同步一份）。
 b.怎么运行需要描述其步骤。
 
+##环境
+jdk1.8
+
+##TODO
+1.log4j.xml 配置相对路径和一些参数配置:http://www.cnblogs.com/tqsummer/archive/2010/08/26/1809232.html
+

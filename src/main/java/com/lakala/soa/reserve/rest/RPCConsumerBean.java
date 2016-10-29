@@ -7,7 +7,7 @@
  *
 */
 
-package com.lakala.soa.examples.rest;
+package com.lakala.soa.reserve.rest;
 
 import com.alibaba.dubbo.rpc.RpcContext;
 import com.lakala.soa.examples.rest.api.AnotherUserRestService;
@@ -23,7 +23,7 @@ import com.lakala.soa.examples.rest.vo.User;
  * @since    JDK 1.7
  * @see 	 
  */
-public class ConsumerBean {
+public class RPCConsumerBean {
 	
 	private AnotherUserRestService anotherUserRestService;
 

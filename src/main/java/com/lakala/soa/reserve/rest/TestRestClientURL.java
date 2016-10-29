@@ -1,4 +1,4 @@
-package com.lakala.soa.examples.rest;
+package com.lakala.soa.reserve.rest;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -20,7 +20,7 @@ import com.lakala.soa.examples.rest.vo.User;
  * @since JDK 1.7
  * @see
  */
-public class RestClient {
+public class TestRestClientURL {
 
 	public static void main(String[] args) {
 		final String port = "8080";
