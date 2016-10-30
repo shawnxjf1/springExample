@@ -66,18 +66,15 @@ public class ClassLoarderTest {
 	public void testLoaderStyle() {
 //		-- 参考：http://blog.csdn.net/wan368500/article/details/8215668
 ////		---运行失败 --需要整理
-		String config = ClassLoarderTest.class.getPackage().getName().replace('.', '/') + "/rest-demo-consumer.xml";
+		String config = ClassLoarderTest.class.getPackage().getName()+".LoaderJarFindClass";
 
 		try {
 			URL url;
-			url = new URL("./");
+			url = new URL(config);
 			ClassLoader myloader = new URLClassLoader(new URL[] { url });
-			Class c;
-			c = myloader.loadClass("test.Test3");
-			TestClassLoder t3 = (TestClassLoder) c.newInstance();
+			Class c = myloader.loadClass(config);
+			System.out.println("c.className" + c.getName());
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (MalformedURLException e1) {
 			e1.printStackTrace();
