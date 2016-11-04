@@ -5,3 +5,7 @@
 
 ##eclipse快捷键
 1.Ctrl+Shift+M(先把光标放在需导入包的类名上) 作用是加Import语句 。
+
+
+##eclipse 编译
+1.project facet -> 修改编译级别 
