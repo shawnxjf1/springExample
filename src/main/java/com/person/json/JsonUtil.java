@@ -20,11 +20,11 @@ public class JsonUtil {
 	 * 2016-11-04 测试结果是，如果this 的属性有null的同样输出了
 	 * @return
 	 */
-	public String  toJson()
+	public String  toJson(Object o)
 	{
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			return mapper.writeValueAsString(this);
+			return mapper.writeValueAsString(o);
 		} catch (JsonProcessingException ex) {
 			logger.error("Response.toJson exception", ex);
 		}
@@ -37,7 +37,8 @@ public class JsonUtil {
 		jUtil.name = "xujianfneg";
 		jUtil.value = "hahaha";
 		
-		System.out.println("===" + jUtil.toJson());
+		System.out.println("===" + jUtil.toJson(jUtil));
+		//2016-11-10 19:32:32 输出结果:==={"name":"xujianfneg"}  value 没有标记 jsonProperty 所以value不输出
 		
 	}
 

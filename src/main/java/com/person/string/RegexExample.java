@@ -71,7 +71,7 @@ public class RegexExample {
 		System.out.println("expression=" + expression);
 		// expression=--- A or Blank In Middle ---
 
-		expression = expression.replaceAll("(\\s+)", "空");
+		expression = expression.replaceAll("(\\s+)", "空");//\s为空格，注意多个空格也只替换一个
 		System.out.println("expression=" + expression);
 		// expression=--空A空or空Blank空In空Middle空--
 
