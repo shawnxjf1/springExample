@@ -13,6 +13,24 @@ public class JsonUtil {
 	
 	private String value;
 	
+	
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
 	Logger logger = Logger.getLogger(JsonUtil.class);
 	
 	/**
@@ -30,16 +48,4 @@ public class JsonUtil {
 		}
 		return null;
 	}
-	
-	public static void main(String[] args) {
-		
-		JsonUtil jUtil = new JsonUtil();
-		jUtil.name = "xujianfneg";
-		jUtil.value = "hahaha";
-		
-		System.out.println("===" + jUtil.toJson(jUtil));
-		//2016-11-10 19:32:32 输出结果:==={"name":"xujianfneg"}  value 没有标记 jsonProperty 所以value不输出
-		
-	}
-
 }

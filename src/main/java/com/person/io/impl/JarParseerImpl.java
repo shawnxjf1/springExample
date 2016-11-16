@@ -1,6 +1,5 @@
-package com.person.jvm;
+package com.person.io.impl;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -14,19 +13,15 @@ import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-import org.junit.Test;
-import org.springframework.remoting.jaxrpc.JaxRpcServicePostProcessor;
-
 import com.person.constants.FileConstants;
-import com.person.io.InputStreamProcessingTemplate;
-import com.person.io.JarProcessor;
+import com.person.io.IJarProcessor;
 
 /**
- * 遍历jar
+ * 解析遍历jar
  * @author lakala-shawn
  *
  */
-public class LoaderJarProcess implements JarProcessor
+public class JarParseerImpl implements IJarProcessor
 {
 	String path = "";
 	JarFile jarFile =null;
@@ -51,27 +46,7 @@ public class LoaderJarProcess implements JarProcessor
 		this.jarFile = jarFile;
 	}
 
-	/**
-	 * 2016年10月30日 测试成功<br>
-	 */
-	@Test
-	public void  testFindJar()
-	{
-		String path = "D:\\lakala_svn\\ssp\\trunk\\Tools\\dssp resource\\lib\\zookeeper-3.4.6.jar";
-		LoaderJarProcess jarProcess = new LoaderJarProcess();
-		jarProcess.setPath(path);
-		JarFile jarFile = null;
-		try
-		{
-			jarFile = new JarFile(new File(path));
-		} catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}  
-		jarProcess.setJarFile(jarFile);
-		new InputStreamProcessingTemplate().processJar(jarProcess);
-	}
+	
 	
 	@Override
 	public void process() throws IOException, ClassNotFoundException
@@ -95,8 +70,11 @@ public class LoaderJarProcess implements JarProcessor
 		    Class<?> c = loader.loadClass(name.replace("/", ".").substring(0,name.length() - 6));//自己定义的loader路径可以找到  
 		    System.out.println(c);
 		    
-//		    name=org/apache/zookeeper/version/util/VerGen.class
-//		    class org.apache.zookeeper.version.util.VerGen
+/**
+ * 2016-11-16 测试的结果：
+ * 		    jarEntry.getName() = name=org/apache/zookeeper/version/util/VerGen.class
+		    class org.apache.zookeeper.version.util.VerGen
+		    */
 		    
 		    classes.add(c);  
 		    Annotation[] classAnnos = c.getDeclaredAnnotations();  

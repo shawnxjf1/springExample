@@ -25,4 +25,58 @@ public class TestRegex {
 		String expression = " * ";
 		Matcher mt = ptBetween.matcher(expression);
 	}
+	
+	/**
+	 * Capturing groups are a way to treat multiple characters as a single unit. They are created by placing the characters to be grouped inside a set of parentheses. For example, the regular expression (dog) creates a single group containing the letters "d", "o", and "g".
+	 */
+	@Test
+	public void testCaptureGroup()
+	{
+		// String to be scanned to find the pattern.
+	      String line = "This order was placed for QT3000! OK?";
+	      String pattern = "(.*)(\\d+)(.*)";
+
+	      // Create a Pattern object
+	      Pattern r = Pattern.compile(pattern);
+
+	      // Now create matcher object.
+	      Matcher m = r.matcher(line);
+	      if (m.find( )) {
+	         System.out.println("Found value: " + m.group(0) );
+	         System.out.println("Found value: " + m.group(1) );
+	         System.out.println("Found value: " + m.group(2) );
+	      }else {
+	         System.out.println("NO MATCH");
+	      }
+	   }
+	
+	/**
+	 * 测试贪婪匹配<br>
+	 * 参考:http://blog.csdn.net/lxcnn/article/details/4756030 <br>
+	 */
+	@Test
+	public void testGreedMatch()
+	{
+		String sourceStr = "aa<div>test1</div>bb<div>test2</div>cc";
+		String greedPattern = "<div>.*</div>";
+		String noGreedPattern = "<div>.*?</div>";//匹配优先量词后加上“?”，即变成属于非贪婪模式的量词，也叫做忽略优先量词
+		Pattern greedR = Pattern.compile(greedPattern);
+		Pattern noGreedR = Pattern.compile(noGreedPattern);
+		
+		Matcher g =greedR.matcher(sourceStr);
+		System.out.println(g.group());
+		/**
+		 * 2016-11-16：
+		 * notepad++ 里测过，返回结果为：<div>test1</div>bb<div>test2</div>
+		 */
+
+		Matcher ng =noGreedR.matcher(sourceStr);
+		System.out.println(ng.group());
+		/**
+		 * 2016-11-16:
+		 * notepad++里测过，返回两个：<div>test1</div> , <div>test2</div>
+		 */
+		
+	}
+	
 }

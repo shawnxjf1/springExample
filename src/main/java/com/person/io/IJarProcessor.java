@@ -8,7 +8,7 @@ import java.util.jar.JarFile;
  * @author lakala-shawn
  *
  */
-public interface JarProcessor  {
+public interface IJarProcessor {
 
     public void process() throws IOException,ClassNotFoundException;
     

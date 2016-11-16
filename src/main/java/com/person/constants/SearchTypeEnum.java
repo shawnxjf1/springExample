@@ -1,4 +1,4 @@
-package com.person.data;
+package com.person.constants;
 
 /**
  * 

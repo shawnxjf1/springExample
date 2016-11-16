@@ -44,7 +44,7 @@ public class InputStreamProcessingTemplate
 	Logger log = Logger.getLogger(InputStreamProcessingTemplate.class);
 	//当然这里可以把inputStream逻辑划分出来<br>
 	
-	 public void processJar(JarProcessor jarProcess)
+	 public void processJar(IJarProcessor jarProcess)
 	 {
 		 JarFile jarFile = jarProcess.getJarFile();
 		 IOException processException = null;
@@ -65,19 +65,19 @@ public class InputStreamProcessingTemplate
 	            	  jarFile.close();
 	              } catch(IOException e){
 	                 if(processException != null){
-	                    throw new MyException(processException, e, "Error message...");
+	                    throw new IOCustomException(processException, e, "Error message...");
 	                 } else {
-	                    throw new MyException(e, "Error closing InputStream for file ");
+	                    throw new IOCustomException(e, "Error closing InputStream for file ");
 	                 }
 	              }
 	           }
 	           if(processException != null){
-	              throw new MyException(processException,"Error processing InputStream for file ");
+	              throw new IOCustomException(processException,"Error processing InputStream for file ");
 	           }
 	    }
 	 }
 	
-	 public void process(InputStream inputStream ,StreamProcessor processor){
+	 public void process(InputStream inputStream ,IStreamProcessor processor){
 	        IOException processException = null;
 	        try{
 	           
@@ -97,114 +97,20 @@ public class InputStreamProcessingTemplate
 	            	  inputStream.close();
 	              } catch(IOException e){
 	                 if(processException != null){
-	                    throw new MyException(processException, e, "Error message...");
+	                    throw new IOCustomException(processException, e, "Error message...");
 	                 } else {
-	                    throw new MyException(e, "Error closing InputStream for file ");
+	                    throw new IOCustomException(e, "Error closing InputStream for file ");
 	                 }
 	              }
 	           }
 	           if(processException != null){
-	              throw new MyException(processException,"Error processing InputStream for file ");
+	              throw new IOCustomException(processException,"Error processing InputStream for file ");
 	           }
 	    }
 	 }
-	   
-	 /**
-	  * 2016年10月30日 测试通过，文件能够输出。<br>
-	  * 不足：中文乱码，英文本来就只占一个字节吧，猜测。<br>
-	  */
-	 @Test
-	   public  void testReadByte() 
-	{
-			//String fullFilePath = ClassLoarderTest.class.getPackage().getName().replace('.', '/') + "/InputStreamProcessingTemplate.java";
-            //com\person\jvm\InputStreamProcessingTemplate.java
-			
-		   String fullFilePath = "D:\\inbox\\logback.xml";
-		   FileInputStream input = null;
-		try
-		{
-			input = new FileInputStream(fullFilePath);
-		} catch (FileNotFoundException e)
-		{
-			log.error(e);
-			e.printStackTrace();
-		}
-		   new InputStreamProcessingTemplate().process(input,new StreamProcessor()
-			{
-				
-				@Override
-				public void process(int input)
-				{
-					System.out.print((char) input);
-				}
-			});
-	}
 	 
-	 /**
-	  * 问题：中文也是乱码<br>
-	  */
-	 @Test
-	 public  void testStringReader()
-	 {
-	 	  //String fullFilePath = ClassLoarderTest.class.getPackage().getName().replace('.', '/') + "/InputStreamProcessingTemplate.java";
-	      //com\person\jvm\InputStreamProcessingTemplate.java
-		 
-	 	   String fullFilePath = "D:\\inbox\\logback.xml";
-	 	   FileInputStream input = null;
-	 	try
-	 	{
-	 		input = new FileInputStream(fullFilePath);
-	 	} catch (FileNotFoundException e)
-	 	{
-	 		log.error(e);
-	 		e.printStackTrace();
-	 	}
-	 	StreamToStringReader stringReader = new StreamToStringReader();
-	 	new InputStreamProcessingTemplate().process(input,stringReader);
-	 	log.info("stringReader=" + stringReader);
-	 }
-	 }
-
-class StreamToStringReader implements StreamProcessor{
-	  private StringBuffer buffer = new StringBuffer();
-	  
-	  public StringBuffer getBuffer(){
-	     return this.buffer;
-	  }
-
-	  public void process(int input){
-	     this.buffer.append((char) input);
-	  }
-	  
-	  @Override
-	public String toString()
-	{
-		return buffer.toString();
-	}
-
-
-
-/**
- * 
- * @author lakala-shawn
- *
- */
-class MyException extends RuntimeException
-{
-	public MyException(String message){
-		super(message);
-	}
-	
-	public MyException(Exception processException,Exception curException,String message){
-		super(message);
-	}
-	
-	public MyException(Exception curException,String message){
-		super(message);
-	}
-	
-    public MyException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }
- }
+	   
+	
+
+
