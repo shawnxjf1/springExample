@@ -1,9 +1,11 @@
 package com.person.jvm;
 
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import com.lakala.soa.reserve.rest.TestRPCDemoConsumer;
@@ -16,7 +18,8 @@ import com.lakala.soa.reserve.rest.TestRPCDemoConsumer;
  * @author lakala-shawn
  *
  */
-public class ClassLoarderTest {
+public class TestClassLoarder {
+	Logger log = Logger.getLogger(TestClassLoarder.class);
 
 	/**
 	 * 加载过程为：
@@ -45,7 +48,7 @@ public class ClassLoarderTest {
 	 */
 	@Test
 	public void testClassLoaderLevel() {
-		ClassLoarderTest hello = new ClassLoarderTest();
+		TestClassLoarder hello = new TestClassLoarder();
 		Class c = hello.getClass();
 		ClassLoader loader = c.getClassLoader();
 		System.out.println("classLoader" + loader);
@@ -66,23 +69,66 @@ public class ClassLoarderTest {
 	public void testLoaderStyle() {
 //		-- 参考：http://blog.csdn.net/wan368500/article/details/8215668
 ////		---运行失败 --需要整理
-		String config = ClassLoarderTest.class.getPackage().getName().replace('.', '/') + "/rest-demo-consumer.xml";
+		String config = TestClassLoarder.class.getPackage().getName();
 
 		try {
 			URL url;
-			url = new URL("./");
+			url = new URL(config);
 			ClassLoader myloader = new URLClassLoader(new URL[] { url });
-			Class c;
-			c = myloader.loadClass("test.Test3");
-			TestClassLoder t3 = (TestClassLoder) c.newInstance();
+			Class c = myloader.loadClass(config);
+			System.out.println("c.className" + c.getName());
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (MalformedURLException e1) {
 			e1.printStackTrace();
 		}
 
 	}
+	
+	/**
+	 * 写这个用例的初衷是由于datamigration系统想通过读取src/main/resource下的配置文件（在eclipse中正常但是在linux后台服务器确实不正常）
+	 */
+	@Test
+	public void testClassLoaderGetResource()
+	{
+		String fileName  = ".";
+		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+		
+		/**
+		 * getResouce()加载顺序为1.parent->getBootstrapResource->this.findResource
+		 */
+		log.info("current Class location=" + classLoader.getResource("."));
+		/**
+		 * 2016-11-16 执行输出结果如下（注意输出是带有/的）：
+		 * window下：current Class location=file:/D:/eclipse_workgroup_github/J2seCodeExample/target/test-classes/
+		 * linux下： /home/hadoop/xjftestDatamigration/
+		*/
+		
+		InputStream inputStream = classLoader.getResourceAsStream(fileName);
+		log.info("inputStream0=" + inputStream);
+		
+		//FIXME　getResourceAsStream() getSystemResource().
+		inputStream = TestClassLoarder.class.getResourceAsStream(fileName);
+		log.info("ClassLoarderTest.class" + TestClassLoarder.class.getResource("."));
+		/**
+		 * 2016-11-16输出：（输出当前class文件的路径）
+		 * ClassLoarderTest.classfile:/D:/eclipse_workgroup_github/J2seCodeExample/target/classes/com/person/jvm/
+		 */
+		
+		inputStream = TestClassLoarder.class.getClassLoader().getResourceAsStream(fileName);
+		log.info("ClassLoarderTest.class.getClassLoader()=" + TestClassLoarder.class.getClassLoader().getResource("."));
+		/**
+		 * 2016-11-16输出：（输出的是test-classes）
+		 * ClassLoarderTest.class.getClassLoader()=file:/D:/eclipse_workgroup_github/J2seCodeExample/target/test-classes/
+		 */
+		
+		log.info("systemResource()=" + TestClassLoarder.class.getClassLoader().getSystemResource("."));
+		/**
+		 * 2016-11-16输出：
+		 * systemResource()=file:/D:/eclipse_workgroup_github/J2seCodeExample/target/test-classes/
+		 */
+	}
+	
+	//FIXME 
 
 }

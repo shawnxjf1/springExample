@@ -42,7 +42,7 @@ import org.junit.Test;
  * @author lakala-shawn
  *
  */
-public class RegexExample {
+public class RegexBasicConcept {
 
 	/**
 	 * 
@@ -70,8 +70,10 @@ public class RegexExample {
 		expression = expression.replaceAll("[+]", "--");
 		System.out.println("expression=" + expression);
 		// expression=--- A or Blank In Middle ---
-
-		expression = expression.replaceAll("(\\s+)", "空");
+		/**
+		 * 说明了默认为贪婪匹配
+		 */
+		expression = expression.replaceAll("(\\s+)", "空");//\s为空格，注意多个空格也只替换一个
 		System.out.println("expression=" + expression);
 		// expression=--空A空or空Blank空In空Middle空--
 
@@ -80,4 +82,17 @@ public class RegexExample {
 		// expression = expression.replaceAll("[+](\\s*)[O|o][R|r](\\s*)[+]", "
 		// OR ");
 	}
+	
+	/**
+	 * 1.贪婪模式在整个表达式匹配成功的前提下，尽可能多的匹配，而非贪婪模式在整个表达式匹配成功的前提下，尽可能少的匹配。<br>
+	 * 2.属于贪婪模式的量词，也叫做匹配优先量词，包括：
+     * “{m,n}”、“{m,}”、“?”、“*”和“+”。
+     * 在一些使用NFA引擎的语言中，在匹配优先量词后加上“?”，即变成属于非贪婪模式的量词，也叫做忽略优先量词，包括：
+     * “{m,n}?”、“{m,}?”、“??”、“*?”和“+?”。
+	 */
+	
+	/**
+	 * FIXME  注意：必须调用find()之后，m.group() 才会有结果。->需要对匹配过程有一定的了解
+	 */
+	
 }
