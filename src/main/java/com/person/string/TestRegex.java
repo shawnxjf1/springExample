@@ -11,7 +11,6 @@ public class TestRegex {
 
 	@Test
 	public void test() {
--- 没有测试OK
 		String expression = "[20150902000000 TO 20150929000000]";
 		Matcher mt = ptBetween.matcher(expression);
 		// mt.matches() 匹配 ; find 正则串
@@ -23,8 +22,7 @@ public class TestRegex {
 
 	@Test
 	public void test1() {
-		--没有测试OK
-		String expression = "*";
+		String expression = " * ";
 		Matcher mt = ptBetween.matcher(expression);
 	}
 }

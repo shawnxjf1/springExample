@@ -88,11 +88,16 @@ public class LoaderJarProcess implements JarProcessor
 		  while (es.hasMoreElements()) {  
 		   JarEntry jarEntry = (JarEntry) es.nextElement();  
 		   String name = jarEntry.getName();  
+		    System.out.println("name=" + name); 
 		   if(name != null && name.endsWith(".class")){//只解析了.class文件，没有解析里面的jar包  
 		    //默认去系统已经定义的路径查找对象，针对外部jar包不能用  
 		    //Class<?> c = Thread.currentThread().getContextClassLoader().loadClass(name.replace("/", ".").substring(0,name.length() - 6));  
 		    Class<?> c = loader.loadClass(name.replace("/", ".").substring(0,name.length() - 6));//自己定义的loader路径可以找到  
-		    System.out.println(c);  
+		    System.out.println(c);
+		    
+//		    name=org/apache/zookeeper/version/util/VerGen.class
+//		    class org.apache.zookeeper.version.util.VerGen
+		    
 		    classes.add(c);  
 		    Annotation[] classAnnos = c.getDeclaredAnnotations();  
 		    classAnnotationMap.put(c, classAnnos);  
