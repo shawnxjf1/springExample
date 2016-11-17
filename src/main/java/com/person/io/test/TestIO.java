@@ -9,7 +9,7 @@ import java.util.jar.JarFile;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import com.person.io.InputStreamProcessingTemplate;
+import com.person.io.IOProcessTemplate;
 import com.person.io.StreamToStringReader;
 import com.person.io.impl.JarParseerImpl;
 
@@ -59,7 +59,7 @@ public class TestIO {
 	 		e.printStackTrace();
 	 	}
 	 	StreamToStringReader stringReader = new StreamToStringReader();
-	 	new InputStreamProcessingTemplate().process(input,stringReader);
+	 	new IOProcessTemplate().process(input,stringReader);
 	 	log.info("stringReader=" + stringReader);
 	 }
 	 
@@ -82,6 +82,6 @@ public class TestIO {
 				e.printStackTrace();
 			}  
 			jarProcess.setJarFile(jarFile);
-			new InputStreamProcessingTemplate().processJar(jarProcess);
+			new IOProcessTemplate().processJar(jarProcess);
 		}
 }

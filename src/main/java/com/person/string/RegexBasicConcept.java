@@ -91,8 +91,10 @@ public class RegexBasicConcept {
      * “{m,n}?”、“{m,}?”、“??”、“*?”和“+?”。
 	 */
 	
+	
 	/**
-	 * FIXME  注意：必须调用find()之后，m.group() 才会有结果。->需要对匹配过程有一定的了解
+	 * 现在大家应该知道,每次执行匹配操作后start(),end(),group()三个方法的值都会改变,改变成匹配到的子字符串的信息,以及它们的重载方法,也会改变成相应的信息. 
+             *注意:只有当匹配操作成功,才可以使用start(),end(),group()三个方法,否则会抛出java.lang.IllegalStateException,也就是当matches(),lookingAt(),find()其中任意一个方法返回true时,才可以使用.
 	 */
 	
 }

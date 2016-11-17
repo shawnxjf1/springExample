@@ -39,9 +39,9 @@ import com.person.jvm.TestClassLoarder;
  *
  */
 //the stream processing context class
-public class InputStreamProcessingTemplate
+public class IOProcessTemplate
 {
-	Logger log = Logger.getLogger(InputStreamProcessingTemplate.class);
+	Logger log = Logger.getLogger(IOProcessTemplate.class);
 	//当然这里可以把inputStream逻辑划分出来<br>
 	
 	 public void processJar(IJarProcessor jarProcess)
