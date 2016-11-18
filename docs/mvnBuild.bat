@@ -24,3 +24,5 @@ REM 2>&1 把 stderr 2 和 stderr 2一起重定向到 file 文件中 ,stdin 0
 
 REM 生成的文件为mvnBuild1118.log
 mvn clean install -Dmaven.test.skip=true  >>  "mvnBuild%date:~5,2%%date:~8,2%.log" 2>&1
+
+exit
