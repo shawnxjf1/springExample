@@ -54,6 +54,17 @@ public class StringExample {
 	 * @return a string that represents the concatenation of this object's
 	 *         characters followed by the string argument's characters.
 	 */
+	
+	/**
+	 * 2016年11月20日：
+	 * true:("123456".startsWith("123")
+	 * 
+	 */
+	@Test
+	public void testStartWith()
+	{
+		System.out.println("123456".startsWith("123"));
+	}
 
 	/**
 	 * public String concat(String str) { }

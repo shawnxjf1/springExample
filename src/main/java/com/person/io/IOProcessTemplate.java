@@ -19,7 +19,7 @@ import java.util.jar.JarFile;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import com.person.jvm.TestClassLoarder;
+import com.person.jvm.classloader.TestClassLoarder;
 /**
  * 这篇文章重点是有 context 和 action ，action pluginto context的思想。
  */
