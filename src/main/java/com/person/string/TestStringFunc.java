@@ -2,7 +2,7 @@ package com.person.string;
 
 import org.junit.Test;
 
-public class StringExample {
+public class TestStringFunc {
 
 	@Test
 	public void testSplit() {
@@ -16,7 +16,7 @@ public class StringExample {
 	 * subString()中无需考虑正则
 	 */
 	@Test
-	public void testSubStr() {
+	public void testSubString() {
 		String a = "[abc]"; // subString 这里[] 在正则中的特殊字符不考虑
 		System.out.println(a.substring(1, a.length() - 1)); // 输出结果为abc
 		// extends
@@ -60,7 +60,7 @@ public class StringExample {
 	 */
 
 	@Test
-	public void testStr() {
+	public void testReplace() {
 		String name = "a.b.c";
 		String path = name.replace('.', '/').concat("/");
 		System.out.println("path=" + path); //path=a/b/c/
@@ -75,6 +75,33 @@ public class StringExample {
 		String url = "http:localhost:8080?fq=%s";
 		System.out.println("urlFormat=" + String.format(url, "TXNTIM:20160809"));
 		//urlFormat=http:localhost:8080?fq=TXNTIM:20160809
+	}
+	
+	@Test
+	public void testEqual()
+	{
+		Student stu = new Student("01Name","01");
+		Student stuBak = new Student("01Name","01");
+		if (stu == stuBak)
+		{
+			System.out.println(String.format("new Stu%s == new Stu%s", "Student(\"01Name\",\"01\")","Student(\"01Name\",\"01\")"));
+		}
+		
+		if (stu.equals(stuBak))
+		{
+			System.out.println(String.format("new Stu%s == new Stu%s", "Student(\"01Name\",\"01\")","Student(\"01Name\",\"01\")"));
+		}
+
+	}
+	
+	class Student{
+		String name;
+		String id;
+		Student(String name,String id)
+		{
+			this.name = name;
+			this.id = id;
+		}
 	}
 
 }
