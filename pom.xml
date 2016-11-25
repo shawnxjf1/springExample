@@ -322,4 +322,48 @@
 			
 		</plugins>
 	</build>
+	
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>env.type</name>
+					<value>dev</value>
+				</property>
+			</activation>
+			<properties>
+				<env.dir>classpath:env/dev</env.dir>
+			</properties>
+			<build>
+				<filters>
+					<filter>${project.basedir}/src/main/resources/env/dev/log4j.properties</filter>
+				</filters>
+			</build>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<env.dir>classpath:env/test</env.dir>
+			</properties>
+			<build>
+				<filters>
+					<filter>${project.basedir}/src/main/resources/env/test/log4j.properties</filter>
+				</filters>
+			</build>
+		</profile>
+		<profile>
+			<id>online</id>
+			<properties>
+				<env.dir>classpath:env/online</env.dir>
+			</properties>
+			<build>
+				<filters>
+					<filter>${project.basedir}/src/main/resources/env/online/log4j.properties</filter>
+				</filters>
+			</build>
+		</profile>
+	</profiles>
+	
 </project>
