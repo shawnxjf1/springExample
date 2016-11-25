@@ -9,3 +9,8 @@
 
 ##eclipse 编译
 1.project facet -> 修改编译级别 
+
+
+##让eclispe 工作在UTF-8环境
+边界eclispe.ini
+-Dfile.encoding=UTF-8
