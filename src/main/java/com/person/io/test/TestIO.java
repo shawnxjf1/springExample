@@ -10,8 +10,8 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import com.person.io.IOProcessTemplate;
-import com.person.io.StreamToStringReader;
 import com.person.io.impl.JarParseerImpl;
+import com.person.io.impl.StreamToStringReader;
 
 public class TestIO {
 	
