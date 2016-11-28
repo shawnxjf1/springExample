@@ -100,8 +100,21 @@ public class TestStringFunc {
 		
 		if (stu.equals(stuBak))
 		{
+			// return (this == obj)
 			System.out.println(String.format("new Stu%s == new Stu%s", "Student(\"01Name\",\"01\")","Student(\"01Name\",\"01\")"));
 		}
+		
+		if (stu.toString().equals(stuBak.toString()))
+		{
+			System.out.println("toString equal.");
+		}
+		System.out.println("stu.toString=" + stu.toString());
+		System.out.println("stuBak.toString=" + stuBak.toString());
+		//输出结果为：
+//		stu.toString=com.person.string.TestStringFunc$Student@2fbac9d0
+//		stuBak.toString=com.person.string.TestStringFunc$Student@10178f2b
+	
+		System.out.println("-----end--------");
 
 	}
 	

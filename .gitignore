@@ -5,6 +5,8 @@ atlassian-ide-plugin.xml
 
 ## ignore any target dir
 target
+RemoteSystemsTempFiles
+_netrc
 
 ##ignore only top level data dir - local node data files for unit tests
 /data
@@ -13,6 +15,8 @@ target
 .settings
 .project
 .classpath
+.metadata
+.idea
 
 ## Ignore project files created by IntelliJ IDEA
 *.iml

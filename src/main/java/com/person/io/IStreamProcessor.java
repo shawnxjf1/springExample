@@ -5,7 +5,7 @@ package com.person.io;
  * @author lakala-shawn
  *
  */
-interface IStreamProcessor {
+public interface IStreamProcessor {
 
  public void process(int input);
 

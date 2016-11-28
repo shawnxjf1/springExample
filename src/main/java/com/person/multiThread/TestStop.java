@@ -60,6 +60,7 @@ public class TestStop {
 			e.printStackTrace();
 		}
 
+		//2016-11-26 程序执行结果
 		// go to stop thread t
 		// finish stopMock().
 		// java.lang.ThreadDeath
