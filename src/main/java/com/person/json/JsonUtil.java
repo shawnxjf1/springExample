@@ -34,7 +34,7 @@ public class JsonUtil {
 	Logger logger = Logger.getLogger(JsonUtil.class);
 	
 	/**
-	 * FIXME 对于null 的属性 怎么不让它输出<br>
+	 * FIXME json对于null 的属性 怎么不让它输出<br>
 	 * 2016-11-04 测试结果是，如果this 的属性有null的同样输出了
 	 * @return
 	 */

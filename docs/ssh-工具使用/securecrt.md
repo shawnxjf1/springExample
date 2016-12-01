@@ -10,3 +10,6 @@ Downloading WoSai02Impl.class from /home/account/account_tomcat/webapps/account/
 /home/account/account_tomcat/webapps/account/WEB-INF/classes/com/lakala/mrss/service/impl/WoSai02Impl.class: 2140 bytes transferred in 0 seconds (2140 bytes
 4. put 上传本地文件
 5. lls 查看本地文件目录
+
+## 防止session失效
+1.session options ->  Send protocol NO-OP  every 60 seconds(60 位自己设置的值)
