@@ -108,8 +108,8 @@ public class TestStringFunc {
 		{
 			System.out.println("toString equal.");
 		}
-		System.out.println("stu.toString=" + stu.toString());
-		System.out.println("stuBak.toString=" + stuBak.toString());
+		System.out.println("输出地址1：stu.toString=" + stu.toString());
+		System.out.println("输出地址2：stuBak.toString=" + stuBak.toString());
 		//输出结果为：
 //		stu.toString=com.person.string.TestStringFunc$Student@2fbac9d0
 //		stuBak.toString=com.person.string.TestStringFunc$Student@10178f2b
@@ -118,6 +118,24 @@ public class TestStringFunc {
 
 	}
 	
+	/**
+	 * String类的hashCode:<br>
+	 *  public int hashCode() {
+        int h = hash;
+        if (h == 0 && value.length > 0) {
+            char val[] = value;
+
+            for (int i = 0; i < value.length; i++) {
+                h = 31 * h + val[i];
+            }
+            hash = h;
+        }
+        return h;
+       }
+	 * @author shawn
+	 *
+	 */
+	
 	class Student{
 		String name;
 		String id;
@@ -125,6 +143,11 @@ public class TestStringFunc {
 		{
 			this.name = name;
 			this.id = id;
+		}
+		
+		@Override
+		public boolean equals(Object obj) {
+			return super.equals(obj);
 		}
 	}
 
