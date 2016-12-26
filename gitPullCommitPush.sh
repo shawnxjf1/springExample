@@ -1,7 +1,7 @@
 curDir=./
 echo begin git add $curDir
 git add $curDir
-echo begin git pull $curDir
+echo begin git pull
 ##git pull $curDir
 git pull
 ##date 命令赋值使用$()

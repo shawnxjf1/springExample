@@ -22,7 +22,6 @@
     
     2.IndexMetaService 里定义了 @Autowire sqlMap，<bean indexMeta></bean>下面<property>就需要去掉。
 	 -->
-	 <bean id="indexMeta" class="com.person.spring.IndexMetaService">
     </bean>
 	
 </beans>

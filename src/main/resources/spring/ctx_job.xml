@@ -1,0 +1,36 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- ======================== 调度工厂 ======================== -->
+	<bean id="quartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<!--定时触发器列表 -->
+			<list>
+				<ref bean="requestTrigger" />
+				<ref bean="refundTrigger" />
+				<ref bean="channelTrigger" />
+			</list>
+		</property>
+		<property name="startupDelay" value="10" />
+	</bean>
+
+	<!-- ======================== 调度触发器 ======================== -->
+	<bean id="quarterTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="requestScheduledJobDetail" />
+		<property name="cronExpression" value="0/10 * * * * ?" /> <!-- 每隔2分钟执行一次 -->
+	</bean>
+	
+	
+	<!-- ======================== 定义目标bean和bean中的方法 ======================== -->
+	<bean id="quarterExampleJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="quarterExampleTrigger" />
+		</property>
+		<property name="targetMethod">
+			<value>execute</value><!-- 要执行的方法名称 -->
+		</property>
+	</bean>
+	
+</beans>

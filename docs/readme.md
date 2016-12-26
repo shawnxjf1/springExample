@@ -1,28 +1,7 @@
-##该工程目的
-积累代码小片段
-工程积累的范畴为企业级以spring mybatis 为核心的代码积累
+## 参考链接
+rmi:
+http://www.ejbtutorial.com/java-rmi/a-step-by-step-implementation-tutorial-for-java-rmi
 
-##怎么记录
-通过package 分隔每个小功能模块
-
-##规范
-1.所有的test用例，以test开头
-2.所有的接口以I开头
-3.所有的实现放在Impl包下
-4.review 表示需要回顾的  - task里
-
-
-##需要注意的点
-1.对于有problem的需要在代码中表明
-2.对于attention特点要加上注释和遇到的场景
-
-该工程目的是通过实时运行代码来了解技术，所以这里有几点主要保证：
-a.保证项目jar包都存在（可以在百度云盘或同步盘同步一份）。
-b.怎么运行需要描述其步骤。
-
-##环境
-jdk1.8
-
-##TODO
-1.log4j.xml 配置相对路径和一些参数配置:http://www.cnblogs.com/tqsummer/archive/2010/08/26/1809232.html
+rpc:
+http://www.inf.fu-berlin.de/lehre/SS03/19560-P/Docs/JWSDP/tutorial/doc/JAXRPC3.html
 

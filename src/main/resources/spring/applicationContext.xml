@@ -10,17 +10,9 @@
 
     <context:annotation-config/>
     
-	<context:component-scan base-package="com.person.*"/> 
+	<context:component-scan base-package="com.spring.*"/> 
 	
-	<!--
-	
-	1.这里定义了indexMeta ，类里的service就需要去掉
-	  @Service
-      public class IndexMetaService { }
-    
-    2.IndexMetaService 里定义了 @Autowire sqlMap，<bean indexMeta></bean>下面<property>就需要去掉。
-	 -->
-	 <bean id="indexMeta" class="com.person.spring.IndexMetaService">
-    </bean>
+	<!-- 定时器配置 -->
+	<import resource="spring/ctx_job.xml" />
 	
 </beans>
