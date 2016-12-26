@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.personal</groupId>
-	<artifactId>j2seCodeExample</artifactId>
+	<artifactId>springExample</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>j2seCodeExample Maven Webapp</name>
+	<name>springExample Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -23,12 +23,6 @@
 	</properties>
 
 	<dependencies>
-		<!-- Elasticsearch -->
-		<dependency>
-			<groupId>org.elasticsearch</groupId>
-			<artifactId>elasticsearch</artifactId>
-			<version>${elasticsearch}</version>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-elasticsearch</artifactId>
@@ -47,6 +41,19 @@
 			<artifactId>javassist</artifactId>
 			<version>3.15.0-GA</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>c3p0</groupId>
+					<artifactId>c3p0</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
 
 		<dependency>
 			<groupId>org.springframework</groupId>

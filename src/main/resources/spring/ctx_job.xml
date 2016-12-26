@@ -8,9 +8,7 @@
 		<property name="triggers">
 			<!--定时触发器列表 -->
 			<list>
-				<ref bean="requestTrigger" />
-				<ref bean="refundTrigger" />
-				<ref bean="channelTrigger" />
+				<ref bean="quarterTrigger" />
 			</list>
 		</property>
 		<property name="startupDelay" value="10" />

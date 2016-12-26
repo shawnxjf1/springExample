@@ -15,13 +15,14 @@ public class TestQuartz {
 	public void test1()
 	{
 		try {
-			Thread.sleep(500000);
+			Thread.sleep(50000);
 			System.out.println("2016-12-26 end");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		/**
-		 * 暂时没有输出<br>
+		 * 2016-12-26报错<br>
+		 * Caused by: java.lang.IncompatibleClassChangeError: class org.springframework.scheduling.quartz.CronTriggerBean has interface org.quartz.CronTrigger as super class
 		 */
 	}
 

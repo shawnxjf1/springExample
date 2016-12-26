@@ -13,6 +13,11 @@
 	<context:component-scan base-package="com.spring.*"/> 
 	
 	<!-- 定时器配置 -->
+	<!--
+	出现过得问题：
 	<import resource="spring/ctx_job.xml" />
+	java.io.FileNotFoundException: D:\eclipse_workgroup_github\SpringExampleProject\target\classes\spring\spring\ctx_job.xml (系统找不到指定的路径。)
+	 -->
+	<import resource="ctx_job.xml" />
 	
 </beans>
