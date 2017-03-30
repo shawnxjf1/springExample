@@ -2,6 +2,23 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+       
+       <!-- 加载报错 -->
+       
+       <!-- 
+       org.springframework.beans.factory.BeanCreationException: 
+Error creating bean with name 'quartzScheduler' 
+defined in class path resource [spring/ctx_job.xml]: 
+Cannot resolve reference to bean 'quarterTrigger' 
+while setting bean property 'triggers' with key [0]; 
+nested exception is org.springframework.beans.factory.CannotLoadBeanClassException: 
+Error loading class [org.springframework.scheduling.quartz.CronTriggerBean] 
+for bean with name 'quarterTrigger' defined in class path resource 
+[spring/ctx_job.xml]: problem with class file or dependent class; 
+nested exception is java.lang.IncompatibleClassChangeError: 
+class org.springframework.scheduling.quartz.CronTriggerBean has interface 
+org.quartz.CronTrigger as super class
+        -->
 
 	<!-- ======================== 调度工厂 ======================== -->
 	<bean id="quartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">

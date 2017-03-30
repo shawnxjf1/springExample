@@ -11,8 +11,10 @@
     <context:component-scan base-package="com.lakala.dssp*"/>
     <bean id="springContextHolder" class="com.lakala.dssp.system.support.SpringContextHolder" />
 	
+	<!--  
     <import resource="../spring/databaseSetting.xml" /> 
-    
     <import resource="../spring/elasticSearch.xml" />
+    -->
+    <import resource="../ctx_rmi.xml" />
     
 </beans>
